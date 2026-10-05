@@ -30,7 +30,11 @@ python -m unittest
 ## Team
 
 <!-- Add yourself here on your Git lesson: - Your Name (role) -->
+<<<<<<< HEAD
 Grace Hooper (engineer)
+=======
+Ada Loveelace (engineer)
+>>>>>>> saim/team-a
 - (your squad will add themselves here)
 
 ## Where to start
