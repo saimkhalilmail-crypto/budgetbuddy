@@ -1,5 +1,5 @@
 """Core BudgetBuddy logic: transactions, balance, and small helpers."""
-
+import datetime
 
 def get_transactions(data):
     return data["transactions"]
@@ -45,3 +45,13 @@ def average_transaction(transactions):
     if not transactions:
         return 0
     return round(sum(t["amount"] for t in transactions) / len(transactions), 2)
+    today = datetime.date.today()
+    today_string = str(today)
+def monthly_summary(data, description, amount, category="general",today_string):
+    tx = {
+        "id": new_id, 
+        "description": description,
+        "amount": amount,
+        "category": category,
+        "date": today_string
+    }
