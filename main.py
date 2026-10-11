@@ -18,6 +18,7 @@ def show_menu():
     print("6) Category breakdown")
     print("7) Spending summary")
     print("8) Account summary")
+    print("9) Monthly summary")
     print("0) Quit")
 
 
@@ -58,6 +59,13 @@ def main():
                   " transactions (avg $" + str(core.average_transaction(txns)) + ").")
         elif choice == "8":
             print(reports.account_summary(data))
+        elif choice == "9":
+             s = reports.monthly_summary(data)
+             for month, summary in s.items():
+                 print(f"Month: {month[1]} Year: {month[0]}")
+                 for label, amount in summary.items():
+                     print(f"  {label}: ${amount}")
+             
         else:
             print("Please pick a number from the menu.")
 

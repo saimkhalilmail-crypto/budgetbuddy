@@ -6,8 +6,11 @@ def get_transactions(data):
 
 
 def add_transaction(data, description, amount, category="general"):
+    today = datetime.date.today()
+    today_string = str(today)
+    
     new_id = max((t["id"] for t in data["transactions"]), default=0) + 1
-    tx = {"id": new_id, "description": description, "amount": amount, "category": category}
+    tx = {"id": new_id, "description": description, "amount": amount, "category": category, "date": today_string}
     data["transactions"].append(tx)
     return tx
 
@@ -45,13 +48,21 @@ def average_transaction(transactions):
     if not transactions:
         return 0
     return round(sum(t["amount"] for t in transactions) / len(transactions), 2)
-    today = datetime.date.today()
-    today_string = str(today)
-def monthly_summary(data, description, amount, category="general",today_string):
-    tx = {
-        "id": new_id, 
-        "description": description,
-        "amount": amount,
-        "category": category,
-        "date": today_string
-    }
+    
+def monthly_summary(data):
+    summary_report = {}
+    all_transactions = data["transactions"]
+    
+    for t in all_transactions:
+        month = t["date"]
+        year = int(month.split("-")[0])
+        month = int(month.split("-")[1])
+        if (year, month) not in summary_report:
+            summary_report[(year, month)] = {"income": 0, "spending": 0}
+        if(t["amount"] >= 0):            
+            summary_report[(year, month)]["income"] += t["amount"];
+        else:
+            summary_report[(year, month)]["spending"] += t["amount"]
+    
+    return summary_report
+        
