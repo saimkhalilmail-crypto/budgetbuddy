@@ -37,6 +37,7 @@ def count_by_category(transactions):
 
 
 def last_transaction(transactions):
+    """Receives a list of transactions and returns the last transaction in the list."""
     return transactions[len(transactions) - 1]
 
 
@@ -49,20 +50,3 @@ def average_transaction(transactions):
         return 0
     return round(sum(t["amount"] for t in transactions) / len(transactions), 2)
     
-def monthly_summary(data):
-    summary_report = {}
-    all_transactions = data["transactions"]
-    
-    for t in all_transactions:
-        month = t["date"]
-        year = int(month.split("-")[0])
-        month = int(month.split("-")[1])
-        if (year, month) not in summary_report:
-            summary_report[(year, month)] = {"income": 0, "spending": 0}
-        if(t["amount"] >= 0):            
-            summary_report[(year, month)]["income"] += t["amount"];
-        else:
-            summary_report[(year, month)]["spending"] += t["amount"]
-    
-    return summary_report
-        
