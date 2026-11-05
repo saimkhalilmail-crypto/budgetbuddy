@@ -1,13 +1,16 @@
 """Core BudgetBuddy logic: transactions, balance, and small helpers."""
-
+import datetime
 
 def get_transactions(data):
     return data["transactions"]
 
 
 def add_transaction(data, description, amount, category="general"):
+    today = datetime.date.today()
+    today_string = str(today)
+    
     new_id = max((t["id"] for t in data["transactions"]), default=0) + 1
-    tx = {"id": new_id, "description": description, "amount": amount, "category": category}
+    tx = {"id": new_id, "description": description, "amount": amount, "category": category, "date": today_string}
     data["transactions"].append(tx)
     return tx
 
@@ -34,6 +37,7 @@ def count_by_category(transactions):
 
 
 def last_transaction(transactions):
+    """Receives a list of transactions and returns the last transaction in the list."""
     return transactions[len(transactions) - 1]
 
 
@@ -45,3 +49,4 @@ def average_transaction(transactions):
     if not transactions:
         return 0
     return round(sum(t["amount"] for t in transactions) / len(transactions), 2)
+    
