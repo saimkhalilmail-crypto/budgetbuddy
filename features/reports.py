@@ -14,3 +14,24 @@ def category_report(data):
     # For now this returns an empty report so the menu never crashes.
     report = {}
     return report
+
+def monthly_summary(data):
+    summary_report = {}
+    all_transactions = data["transactions"]
+    
+    for t in all_transactions:
+        if "date" not in t:
+            continue
+        
+        month = t["date"]
+        year = int(month.split("-")[0])
+        month = int(month.split("-")[1])
+        if (year, month) not in summary_report:
+            summary_report[(year, month)] = {"income": 0, "spending": 0}
+        if(t["amount"] >= 0):            
+            summary_report[(year, month)]["income"] += t["amount"];
+        else:
+            summary_report[(year, month)]["spending"] += t["amount"]
+    
+    return summary_report
+        

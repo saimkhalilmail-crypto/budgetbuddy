@@ -29,8 +29,10 @@ python -m unittest
 
 ## Team
 
-Saim Khalil
 
+<!-- Add yourself here on your Git lesson: - Your Name (role) -->
+Saim Khalil
+- (your squad will add themselves here)
 
 ## Where to start
 
