@@ -29,6 +29,7 @@ python -m unittest
 
 ## Team
 
+
 <!-- Add yourself here on your Git lesson: - Your Name (role) -->
 Saim Khalil
 - (your squad will add themselves here)
@@ -38,3 +39,19 @@ Saim Khalil
 Pick a ticket from the `tickets/` folder (or the Issues tab once your section
 repo exists). Read `CONTRIBUTING.md` for the Definition of Done every pull
 request has to meet.
+
+## Version 1.0
+
+Fixed account_sumamry crashing bug
+
+Added 2 tests for average_balance
+
+Fixed last_transaction and count_by_category bugs
+
+Fixed total_spent and average_transaction bugs
+
+Documented last_transaction
+
+Added a new monthly summary option
+
+Added developer name to team section
